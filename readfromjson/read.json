@@ -1,0 +1,36 @@
+{
+    "Employees": [
+        {
+            "Employee1": [
+                {
+                    "name" : "Ankith",
+                    "profession" : "SE",
+                     "Address" : [
+                        {
+                            "Colony" : "colony",
+                            "Pincode" : 500006,
+                            "Street" : "Street 1"
+                        }
+                     ]
+                }
+            ],
+
+            "Employee2": [
+                {
+                    "name" : "Rahul",
+                    "profession" : "SE1",
+                     "Address" : [
+                        {
+                            "Colony" : "sv colony",
+                            "Pincode" : 505559,
+                            "Street" : "Street 2"
+                        }
+                     ]
+                }
+            ]
+
+
+        }
+    ]
+
+}
