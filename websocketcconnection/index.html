@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Document </title>
+    </head>
+    <body>
+        <h1>Home Page</h1>
+        <script>
+            let websocket = new WebSocket("ws://localhost:5000/ws");
+            console.log("Attempting Connection....");
+
+            websocket.onopen = () => {
+                console.log("Successfully Connected");
+                websocket.send("Hello Server");
+            };
+
+            websocket.close = (event) => {
+                console.log("Connection Closed");
+            }
+
+            websocket.onerror = (error) => {
+                console.log("Connected Error", error);
+            }
+            
+        </script>
+    </body>
+</html>
