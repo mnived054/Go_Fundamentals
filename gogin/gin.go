@@ -1,17 +1,21 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
-	router := gin.Default()
+	r := gin.Default()
 
-	router.GET("/getData", func(c *gin.Context) {
-		c.JSON(200, gin.H{"data": "Hi i am GIN framework"})
+	r.GET("/Get", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"message": "message from gin get method"})
 	})
 
-	router.POST("/getDataPOST", func(c *gin.Context) {
-		c.JSON(200, gin.H{"data": "hi this POST message from GIN framework"})
+	r.POST("/Post", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"message": "From post method"})
 	})
 
-	router.Run(":8086")
+	r.Run(":6060")
 }
