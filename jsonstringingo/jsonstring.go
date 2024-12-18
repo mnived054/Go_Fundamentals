@@ -3,27 +3,35 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 )
 
+type Person struct {
+	Name    string `json:"name"`
+	Age     int    `json:"age"`
+	Address string `json:"address"`
+}
+
 func main() {
-	jsonData := `
-	{
-		"intValue":1234,
-		"boolValue":true,
-		"stringValue":"hello!",
-		"dateValue":"2022-03-02T09:10:00Z",
-		"objectValue":{
-			"arrayValue":[1,2,3,4]
-		},
-		"nullStringValue":null,
-		"nullIntValue":null
+
+	person := Person{
+		Name:    "Nived",
+		Age:     24,
+		Address: "hyd",
 	}
-`
-	var data map[string]interface{}
-	err := json.Unmarshal(jsonData, &data)
+
+	jsonData, err := json.Marshal(person)
 	if err != nil {
-		fmt.Printf("could not unmarshal json: %s\n", err)
-		return
+		log.Fatal("Error encoding JSON: ", err)
 	}
-	fmt.Printf("json map: %v\n", data)
+	fmt.Println("Encoded JSON string:")
+	fmt.Println(string(jsonData))
+
+	var decodedPerson Person
+	err = json.Unmarshal(jsonData, &decodedPerson)
+	if err != nil {
+		log.Fatal("Error decoding JSON: ", err)
+	}
+	fmt.Println("\nDecoded struct: ")
+	fmt.Printf("Name: %s, Age:%d, Address: %s\n", decodedPerson.Name, decodedPerson.Age, decodedPerson.Address)
 }
