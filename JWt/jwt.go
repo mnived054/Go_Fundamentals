@@ -9,7 +9,7 @@ import (
 	"github.com/google/uuid"
 )
 
-var SECRET_KEY = "THIS IS SECRET KEY"
+var SECRET_KEY string
 
 type User struct {
 	Id    uuid.UUID
@@ -35,8 +35,13 @@ func GenerateJWT(user *User) (string, error) {
 }
 
 func main() {
+	fmt.Println("Enter secret key :")
+	fmt.Scan(&SECRET_KEY)
 	user_id := uuid.New()
-	email := "user1@gmail.com"
+
+	var email string
+	fmt.Println("Enter your email: ")
+	fmt.Scan(&email)
 
 	fmt.Println("User info:")
 	fmt.Printf("Id: %s\nEmail: %s\n", user_id.String(), email)
