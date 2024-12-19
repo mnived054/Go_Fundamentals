@@ -4,17 +4,20 @@ import (
 	"fmt"
 )
 
-func sumAndDivide(x, y float64) float64 {
-	var sum = x
-	for i := x; i < y; i++ {
-		sum = sum + 1 + i
-	}
-
-	return sum / (x + y)
-
-}
-
 func main() {
+	ch := make(chan string)
+	ch1 := make(chan string)
 
-	fmt.Println(sumAndDivide(4, 10))
+	go func() {
+		element := "nived"
+		ch <- element
+	}()
+	go func() {
+		ch1 <- <-ch
+	}()
+
+	val := <-ch1
+
+	fmt.Println(val)
+
 }
