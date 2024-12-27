@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 
 	//Note:- slices are similar has arrays but array contain with fixed sixe and slices doesnt declare particular index size
-	arr1 := []int{1, 1, 1}
+	arr1 := [3]int{1, 1, 1}
 	fmt.Println(arr1)
 	fmt.Println(len(arr1))
 	fmt.Printf("capacity %v", cap(arr1))
