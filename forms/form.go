@@ -1,8 +1,8 @@
 package main
 
 import (
-	"html/template"
 	"net/http"
+	"text/template"
 )
 
 type ContactDetails struct {
@@ -11,6 +11,8 @@ type ContactDetails struct {
 	Subject string
 	Message string
 }
+
+// this is mux handler
 
 func main() {
 	tmpl := template.Must(template.ParseFiles("D:/Go data types/forms/form.html"))
@@ -28,7 +30,6 @@ func main() {
 			Message: r.FormValue("message"),
 		}
 
-		// do something with details
 		_ = details
 
 		tmpl.Execute(w, struct{ Success bool }{true})
